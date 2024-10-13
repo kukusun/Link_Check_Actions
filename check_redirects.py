@@ -4,7 +4,9 @@ import requests
 urls = [
     "https://potplayer.daum.net",
     "https://github.com/rozbo/hexo-neat",
-    "https://learn.microsoft.com/zh-cn/windows/deployment/upgrade/windows-10-edition-upgrades"
+    "https://learn.microsoft.com/zh-cn/windows/deployment/upgrade/windows-10-edition-upgrades",
+    "https://learn.microsoft.com/zh-cn/windows/deployment/upgrade/windows-edition-upgrades",
+    "https://learn.microsoft.com/zh-cn/windows/deployment/upgrade/windows-edition-upgrades-aabb"
 ]
 
 def check_urls(urls):
@@ -13,7 +15,7 @@ def check_urls(urls):
         try:
             response = requests.head(url, allow_redirects=True)
             if response.status_code == 200:
-                if response.url != url:
+                if response.url.rstrip('/') != url.rstrip('/'):
                     results.append(f"{url} redirects to {response.url} (重定向到 {response.url})")
                 else:
                     results.append(f"{url} is valid. (有效)")
