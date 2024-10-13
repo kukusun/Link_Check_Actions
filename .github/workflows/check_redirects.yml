@@ -39,5 +39,5 @@ jobs:
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
         git add $FILENAME
-        git commit -m 'Update check results for $DATE'
+        git commit -m "Update check results for $DATE"
         git push
