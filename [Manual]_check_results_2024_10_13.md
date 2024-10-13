@@ -1,5 +1,0 @@
-https://potplayer.daum.net is valid. (有效)
-https://github.com/rozbo/hexo-neat redirects to https://github.com/ohroy/hexo-neat (重定向到 https://github.com/ohroy/hexo-neat)
-https://learn.microsoft.com/zh-cn/windows/deployment/upgrade/windows-10-edition-upgrades redirects to https://learn.microsoft.com/zh-cn/windows/deployment/upgrade/windows-edition-upgrades (重定向到 https://learn.microsoft.com/zh-cn/windows/deployment/upgrade/windows-edition-upgrades)
-https://learn.microsoft.com/zh-cn/windows/deployment/upgrade/windows-edition-upgrades is valid. (有效)
-https://learn.microsoft.com/zh-cn/windows/deployment/upgrade/windows-edition-upgrades-aabb is not valid. Status code: 404 (无效，状态码: 404)
