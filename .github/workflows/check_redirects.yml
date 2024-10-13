@@ -29,8 +29,7 @@ jobs:
 
     - name: Commit results
       run: |
-        TZ='Asia/Shanghai' date
-        DATE=$(date +'%Y_%m_%d_%H_%M')
+        DATE=$(TZ='Asia/Shanghai' date +'%Y_%m_%d_%H_%M')
         if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
           FILENAME="results/[Manual]check_results_$DATE.md"
         else
