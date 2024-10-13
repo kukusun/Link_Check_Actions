@@ -29,11 +29,12 @@ jobs:
 
     - name: Commit results
       run: |
-        DATE=$(date +'%Y_%m_%d')
+        TZ='Asia/Shanghai' date
+        DATE=$(date +'%Y_%m_%d_%H_%M')
         if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-          FILENAME="[Manual]_check_results_$DATE.md"
+          FILENAME="results/[Manual]check_results_$DATE.md"
         else
-          FILENAME="check_results_$DATE.md"
+          FILENAME="results/[Actions]check_results_$DATE.md"
         fi
         mv check_results.md $FILENAME
         git config --global user.name 'github-actions'
