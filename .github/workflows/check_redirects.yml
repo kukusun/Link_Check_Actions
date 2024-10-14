@@ -67,8 +67,15 @@ jobs:
         script: |
           const fs = require('fs');
           const nodemailer = require('nodemailer');
-          const results = fs.readFileSync('check_results.md', 'utf8');
-          const fileName = path.basename('check_results.md');
+          const path = require('path');
+          
+          // 获取文件路径和文件名
+          const date = new Date().toISOString().replace(/[-:]/g, '').split('.')[0];
+          const fileName = `results/[Actions]check_results_${date}.md`;
+          
+          // 读取文件内容
+          const results = fs.readFileSync(fileName, 'utf8');
+          
           let transporter = nodemailer.createTransport({
             service: 'outlook',
             auth: {
