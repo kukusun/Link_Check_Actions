@@ -37,7 +37,7 @@ jobs:
         fi
 
     - name: Set DATE environment variable
-      run: DATE=$(TZ='Asia/Shanghai' date +'%Y年%m月%d日%H时%M分')" >> $GITHUB_ENV
+      run: echo "DATE=$(TZ='Asia/Shanghai' date +'%Y年%m月%d日%H时%M分')" >> $GITHUB_ENV
       
     - name: Commit results
       if: env.results_empty == 'false'
