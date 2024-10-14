@@ -36,10 +36,12 @@ jobs:
           echo "results_empty=false" >> $GITHUB_ENV
         fi
 
+    - name: Set DATE environment variable
+      run: DATE=$(TZ='Asia/Shanghai' date +'%Y年%m月%d日%H时%M分')" >> $GITHUB_ENV
+      
     - name: Commit results
       if: env.results_empty == 'false'
       run: |
-        DATE=$(TZ='Asia/Shanghai' date +'%Y年%m月%d日%H时%M分')
         if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
           FILENAME="results/[Manual]check_results_$DATE.md"
         else
@@ -51,6 +53,8 @@ jobs:
         git add $FILENAME
         git commit -m "Update check results for $DATE"
         git push
+      env: 
+        DATE: ${{ env.DATE }}
 
     - name: Install Node.js
       uses: actions/setup-node@v2
@@ -69,9 +73,8 @@ jobs:
           const nodemailer = require('nodemailer');
           const path = require('path');
           
-          // 获取文件路径和文件名
-          const date = new Date().toISOString().replace(/[-:]/g, '').split('.')[0];
-          const fileName = `results/[Actions]check_results_${date}.md`;
+          // 获取环境变量中的文件名
+          const fileName = process.env.FILENAME;
           
           // 读取文件内容
           const results = fs.readFileSync(fileName, 'utf8');
@@ -101,3 +104,5 @@ jobs:
       env:
         EMAIL_USER: ${{ secrets.EMAIL_USER }}
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        DATE: ${{ env.DATE }}
+        FILENAME: ${{ env.FILENAME }}
