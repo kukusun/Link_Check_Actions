@@ -91,7 +91,7 @@ jobs:
           });
 
           let mailOptions = {
-            from: 'your-email@gmail.com',
+            from: process.env.EMAIL_USER,
             to: 'kukusun@outlook.com',
             subject: '链接检测结果：${fileName}',
             text: results
