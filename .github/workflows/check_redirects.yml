@@ -27,7 +27,16 @@ jobs:
       run: |
         python check_redirects.py
 
+    - name: Check if results file is empty
+      id: check_results
+      run: |
+        if [ ! -s check_results.md ]; then
+          echo "results_empty=true" >> $GITHUB_ENV
+        else
+          echo "results_empty=false" >> $GITHUB_ENV
+
     - name: Commit results
+      if: env.results_empty == 'false'
       run: |
         DATE=$(TZ='Asia/Shanghai' date +'%Y年%m月%d日%H时%M分')
         if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
