@@ -3,7 +3,7 @@ import requests
 # 在这里添加你收藏的链接
 urls = [
     "https://potplayer.daum.net",
-    "https://kkgithub.com/rozbo/hexo-neat",
+    "https://github.com/rozbo/hexo-neat",
     "https://learn.microsoft.com/zh-cn/windows/deployment/upgrade/windows-10-edition-upgrades",
     "https://learn.microsoft.com/zh-cn/windows/deployment/upgrade/windows-edition-upgrades",
     "https://learn.microsoft.com/zh-cn/windows/deployment/upgrade/windows-edition-upgrades-aabb"
