@@ -51,3 +51,38 @@ jobs:
         git add $FILENAME
         git commit -m "Update check results for $DATE"
         git push
+
+    - name: Send email with results
+      if: env.results_empty == 'false'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          const nodemailer = require('nodemailer');
+          const results = fs.readFileSync('check_results.md', 'utf8');
+          const fileName = path.basename('check_results.md');
+          let transporter = nodemailer.createTransport({
+            service: 'outlook',
+            auth: {
+              user: process.env.EMAIL_USER,
+              pass: process.env.EMAIL_PASSWORD
+            }
+          });
+
+          let mailOptions = {
+            from: 'your-email@gmail.com',
+            to: 'kukusun@outlook.com',
+            subject: '链接检测结果：${fileName}',
+            text: results
+          };
+
+          transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent: ' + info.response);
+            }
+          });
+      env:
+        EMAIL_USER: ${{ secrets.EMAIL_USER }}
+        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
