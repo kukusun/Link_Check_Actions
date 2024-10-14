@@ -111,21 +111,3 @@ jobs:
         CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
         REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
         DATE: ${{ env.DATE }}
-
-    - name: Send email with results test
-      if: env.results_empty == 'false'
-      uses: dawidd6/action-send-mail@v3
-      with:
-        server_address: smtp-mail.outlook.com
-        server_port: 587
-        username: ${{ secrets.EMAIL_USER }}
-        password: ${{ secrets.EMAIL_PASSWORD }}
-        subject: test e-mail
-        body: |
-          Here are the check results:
-          hello
-        to: kukusun@outlook.com
-        from: ${{ secrets.EMAIL_USER }}
-      env:
-        EMAIL_USER: ${{ secrets.EMAIL_USER }}
-        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
