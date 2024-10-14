@@ -34,6 +34,7 @@ jobs:
           echo "results_empty=true" >> $GITHUB_ENV
         else
           echo "results_empty=false" >> $GITHUB_ENV
+        fi
 
     - name: Commit results
       if: env.results_empty == 'false'
