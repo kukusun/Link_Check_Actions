@@ -86,3 +86,11 @@ jobs:
       env:
         EMAIL_USER: ${{ secrets.EMAIL_USER }}
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+      pre:
+        steps:
+          - name: Install Node.js
+            uses: actions/setup-node@v2
+            with:
+              node-version: '14'
+          - name: Install nodemailer
+            run: npm install nodemailer
