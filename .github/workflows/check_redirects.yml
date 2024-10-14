@@ -71,10 +71,11 @@ jobs:
         script: |
           const fs = require('fs');
           const nodemailer = require('nodemailer');
-          const path = require('path');
           
-          // 获取环境变量中的文件名
-          const fileName = process.env.FILENAME;
+          // 动态生成文件名
+          const date = process.env.DATE;
+          const fileName = process.env.GITHUB_EVENT_NAME === 'workflow_dispatch' ? `results/[Manual]check_results_${date}.md` : `results/[Actions]check_results_${date}.md`;
+          console.log('File Name:', fileName);
           
           // 读取文件内容
           const results = fs.readFileSync(fileName, 'utf8');
@@ -105,4 +106,3 @@ jobs:
         EMAIL_USER: ${{ secrets.EMAIL_USER }}
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
         DATE: ${{ env.DATE }}
-        FILENAME: ${{ env.FILENAME }}
