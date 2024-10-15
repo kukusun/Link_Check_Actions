@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Set DATE environment variable
+      run: echo "DATE=$(TZ='Asia/Shanghai' date +'%Y年%m月%d日%H时%M分')" >> $GITHUB_ENV
+      
     - name: Checkout repository
       uses: actions/checkout@v2
 
@@ -35,17 +38,14 @@ jobs:
         else
           echo "results_empty=false" >> $GITHUB_ENV
         fi
-
-    - name: Set DATE environment variable
-      run: echo "DATE=$(TZ='Asia/Shanghai' date +'%Y年%m月%d日%H时%M分')" >> $GITHUB_ENV
       
     - name: Commit results
       if: env.results_empty == 'false'
       run: |
         if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-          FILENAME="results/[Manual]check_results_$DATE.md"
+          FILENAME="results/[手动检测]_$DATE.md"
         else
-          FILENAME="results/[Actions]check_results_$DATE.md"
+          FILENAME="results/[自动检测]_$DATE.md"
         fi
         mv check_results.md $FILENAME
         git config --global user.name 'github-actions'
@@ -74,7 +74,7 @@ jobs:
           
           // 动态生成文件名
           const date = process.env.DATE;
-          const fileName = process.env.GITHUB_EVENT_NAME === 'workflow_dispatch' ? `results/[Manual]check_results_${date}.md` : `results/[Actions]check_results_${date}.md`;
+          const fileName = process.env.GITHUB_EVENT_NAME === 'workflow_dispatch' ? `results/[手动检测]_$DATE.md` : `results/[自动检测]_$DATE.md`;
           console.log('File Name:', fileName);
           
           // 读取文件内容
