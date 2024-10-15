@@ -81,7 +81,7 @@ jobs:
           const results = fs.readFileSync(fileName, 'utf8');
           
           let transporter = nodemailer.createTransport({
-            host: 'smtp.gmail.com',
+            host: 'smtp.qq.com',
             port: 587,
             secure: false,
             auth: {
