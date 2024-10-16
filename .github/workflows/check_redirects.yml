@@ -80,7 +80,7 @@ jobs:
           
           // 动态生成文件名
           const date = process.env.DATE;
-          const fileName = process.env.GITHUB_EVENT_NAME === 'workflow_dispatch' ? `results/[手动检测]_${date}.md` : `results/[自动检测]__${date}.md`;
+          const fileName = process.env.GITHUB_EVENT_NAME === 'workflow_dispatch' ? `results/[手动检测]_${date}.md` : `results/[自动检测]_${date}.md`;
           console.log('File Name:', fileName);
           
           // 读取文件内容
