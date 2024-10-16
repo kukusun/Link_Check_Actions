@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Print Start Time
       run: |
-        START_DATE=$(TZ='Asia/Shanghai' date +'%Y年%m月%d日%H时%M分')
+        START_DATE=$(TZ='Asia/Shanghai' date +'%Y年%m月%d日%H时%M分%S秒')
         echo "开始时间：$START_DATE"
     
     - name: Set DATE environment variable
@@ -117,5 +117,5 @@ jobs:
 
     - name: Print End Time
       run: |
-        END_DATE=$(TZ='Asia/Shanghai' date +'%Y年%m月%d日%H时%M分')
+        END_DATE=$(TZ='Asia/Shanghai' date +'%Y年%m月%d日%H时%M分%S秒')
         echo "结束时间：$END_DATE"
