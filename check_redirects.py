@@ -103,14 +103,14 @@ def check_urls(urls):
             response = requests.head(url, allow_redirects=True)
             if response.status_code == 200:
                 if response.url.rstrip('/') != url.rstrip('/'):
-                    results.append(f"{url} redirects to {response.url} (重定向到 {response.url})")
+                    results.append(f"{url} (重定向到 {response.url})") # redirects to {response.url}
                 # 有效我注释掉了，我只需要它向我输出有问题的结果
                 # else:
                     # results.append(f"{url} is valid. (有效)")
             else:
-                results.append(f"{url} is not valid. Status code: {response.status_code} (无效，状态码: {response.status_code})")
+                results.append(f"{url} (无效，状态码: {response.status_code})") # is not valid. Status code: {response.status_code}
         except requests.RequestException as e:
-            results.append(f"Error checking {url}: {e} (检查 {url} 时出错: {e})")
+            results.append(f"(检查 {url} 时出错: {e})") # Error checking {url}: {e}
     return results
 
 if __name__ == "__main__":
