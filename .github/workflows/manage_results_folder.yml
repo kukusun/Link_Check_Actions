@@ -21,6 +21,7 @@ jobs:
     - name: Recreate results folder
       run: |
         mkdir results
+        touch results/.gitkeep
 
     - name: Commit changes
       run: |
