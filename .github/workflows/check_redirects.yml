@@ -2,7 +2,7 @@ name: Check Redirects
 
 on:
   schedule:
-    - cron: '30 3 * * *'  # 自动执行时间
+    - cron: '30 4 * * *'  # 定时执行
   workflow_dispatch:
 
 jobs:
