@@ -16,5 +16,5 @@ jobs:
 
     - name: Remove and recreate results folder
       run: |
-        rm -rf results
+        sudo rm -rf results
         mkdir results
