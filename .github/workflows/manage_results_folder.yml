@@ -21,7 +21,8 @@ jobs:
     - name: Recreate results folder
       run: |
         mkdir results
-        echo "This file was created on $(date)" > results/timestamp.txt
+        DATE=$(TZ='Asia/Shanghai' date +'%Y年%m月%d日%H时%M分%S秒')
+        echo "$DATE" > results/timestamp.txt
 
     - name: Commit changes
       run: |
