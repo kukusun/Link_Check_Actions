@@ -14,7 +14,20 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Remove and recreate results folder
+    - name: Remove results folder
       run: |
-        sudo rm -rf results
+        rm -rf results
+
+    - name: Recreate results folder
+      run: |
         mkdir results
+
+    - name: Commit changes
+      run: |
+        git config --global user.name 'github-actions'
+        git config --global user.email 'github-actions@github.com'
+        git add results
+        git commit -m "Cleaned results folder"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
