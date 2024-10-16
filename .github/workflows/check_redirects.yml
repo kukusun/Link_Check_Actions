@@ -2,7 +2,7 @@ name: Check Redirects
 
 on:
   schedule:
-    - cron: '0 19 * * *'  # 每天中国上海时间晚上3点运行一次
+    - cron: '05 3 * * *'  # 自动执行时间
   workflow_dispatch:
 
 jobs:
