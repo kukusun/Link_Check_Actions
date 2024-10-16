@@ -107,7 +107,7 @@ def check_urls(urls):
                     results.append(f"{url} (重定向到 {response.url})") # redirects to {response.url}
                 # 有效我注释掉了，我只需要它向我输出有问题的结果
                 else:
-                    results.append(f"{url} is valid. (有效)")
+                    results.append(f"{url} (有效)") # is valid.
             else:
                 results.append(f"{url} (无效，状态码: {response.status_code})") # is not valid. Status code: {response.status_code}
         except requests.RequestException as e:
