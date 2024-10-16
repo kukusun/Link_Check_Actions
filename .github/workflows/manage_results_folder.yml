@@ -21,7 +21,7 @@ jobs:
     - name: Recreate results folder
       run: |
         mkdir results
-        touch results/.gitkeep
+        echo "This file was created on $(date)" > results/timestamp.txt
 
     - name: Commit changes
       run: |
