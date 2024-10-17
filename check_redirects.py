@@ -108,18 +108,18 @@ def check_urls(urls):
             original_url = url.rstrip('/')
 
             if response.history and final_url != original_url:
-                redirect_info = f"{url} (- 重定向到 {response.url} -)\n【 重定向过程"
+                redirect_info = f"{url} (· 重定向到 {response.url} ·)\n(· 重定向过程"
                 for resp in response.history:
                     redirect_info += f" ---> 状态码: {resp.status_code}, URL: {resp.url}"
-                redirect_info += f" ---> 最终请求状态码: {response.status_code}, URL: {response.url} 】"
+                redirect_info += f" ---> 最终请求状态码: {response.status_code}, URL: {response.url} ·)"
                 results.append(redirect_info)
             elif response.status_code != 200:
-                results.append(f"{url} (- 无效，状态码: {response.status_code} -)")
+                results.append(f"{url} (· 无效，状态码: {response.status_code} ·)")
             # 注释掉正常的输出
             # elif response.status_code == 200:
-            #     results.append(f"{url} (- 有效 -)")
+            #     results.append(f"{url} (· 有效 ·)")
         except requests.RequestException as e:
-            results.append(f"{url} (- 检查时出错: {e} -)")
+            results.append(f"{url} (· 检查时出错: {e} ·)")
     return results
 
 if __name__ == "__main__":
