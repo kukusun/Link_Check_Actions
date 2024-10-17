@@ -2,6 +2,7 @@ import requests
 
 # 在这里添加你收藏的链接
 urls = [
+    "https://kukusun.github.io/blog/",
     "https://tmp-hd106.vx-cdn.com/file-670fadd53483d-670fae4b71ea3/Windows6.1-KB3102810-x64.msu",
     "https://potplayer.daum.net",
     "https://github.com/rozbo/hexo-neat",
