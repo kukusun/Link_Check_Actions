@@ -4,6 +4,7 @@ import requests
 urls = [
     "https://kukusun.github.io/blog/",
     "https://tmp-hd106.vx-cdn.com/file-670fadd53483d-670fae4b71ea3/Windows6.1-KB3102810-x64.msu",
+    "https://kukusun.github.io/blog",
     "https://potplayer.daum.net",
     "https://github.com/rozbo/hexo-neat",
     "https://learn.microsoft.com/zh-cn/windows/deployment/upgrade/windows-10-edition-upgrades",
