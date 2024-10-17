@@ -103,7 +103,7 @@ def check_urls(urls):
     results = []
     for url in urls:
         try:
-            response = requests.get(url, allow_redirects=True)
+            response = requests.head(url, allow_redirects=True)
             if response.status_code == 200:
                 if response.url.rstrip('/') != url.rstrip('/'):
                     results.append(f"{url} (重定向到 {response.url})") # redirects to {response.url}
