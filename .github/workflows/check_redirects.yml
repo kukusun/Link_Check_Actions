@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  check:
+  check-redirects:
     runs-on: ubuntu-latest
 
     steps:
