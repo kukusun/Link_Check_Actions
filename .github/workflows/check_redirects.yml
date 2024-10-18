@@ -2,7 +2,8 @@ name: Check Redirects
 
 on:
   schedule:
-    - cron: '00 0,14 * * *'  # 定时执行
+    - cron: '00 0 * * *'  # 每天 UTC 时间 0:00，即北京时间 8:00
+    - cron: '00 14 * * *'  # 每天 UTC 时间 14:00，即北京时间 22:00
   workflow_dispatch:
 
 jobs:
@@ -99,7 +100,7 @@ jobs:
           let mailOptions = {
             from: process.env.EMAIL_USER,
             to: 'kukusun@outlook.com',
-            subject: `链接检测结果：${fileName}`,
+            subject: `${fileName}`,
             text: results
           };
 
