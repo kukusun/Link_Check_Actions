@@ -104,7 +104,7 @@ def check_urls(urls):
     results = []
     for url in urls:
         try:
-            response = requests.get(url, allow_redirects=True, headers={"Cache-Control": "no-cache"})
+            response = requests.get(url, allow_redirects=True)
             final_url = response.url.rstrip('/')
             original_url = url.rstrip('/')
 
