@@ -95,9 +95,7 @@ urls = [
     "https://github.com/hellzerg/optimizer",
     "https://github.com/Code52/carnac",
     "https://github.com/taojy123/KeymouseGo",
-    "https://github.com/xiaoxinpro/ChineseSubtitleConversionTool",
-    "",
-    ""
+    "https://github.com/xiaoxinpro/ChineseSubtitleConversionTool"
 ]
 
 headers = {
