@@ -114,17 +114,21 @@ def check_urls(urls):
             response = requests.get(url, allow_redirects=True, headers=headers)
             final_base_url = get_base_url(response.url).rstrip('/')
             original_base_url = get_base_url(url).rstrip('/')
-            if response.history and final_base_url != original_base_url:
-                redirect_info = f"{url} (· 重定向到 {response.url} ·)\n(· 重定向过程"
-                for resp in response.history:
-                    redirect_info += f" ---> 状态码: {resp.status_code}, URL: {resp.url}"
-                redirect_info += f" ---> 最终请求状态码: {response.status_code}, URL: {response.url} ·)"
-                results.append(redirect_info)
-            elif response.status_code != 200:
-                results.append(f"{url} (· 无效，状态码: {response.status_code} ·)")
-            # 注释掉正常的输出
-            # elif response.status_code == 200:
-            #     results.append(f"{url} (· 有效 ·)")
+            if response.history:
+                redirect_urls = [resp.url for resp in response.history]
+                redirect_urls.append(response.url)
+                visible_url = get_base_url(redirect_urls[-1]).rstrip('/')
+                if visible_url != original_base_url:
+                    redirect_info = f"{url} (· 重定向到 {response.url} ·)\n(· 重定向过程"
+                    for resp in response.history:
+                        redirect_info += f" ---> 状态码: {resp.status_code}, URL: {resp.url}"
+                    redirect_info += f" ---> 最终请求状态码: {response.status_code}, URL: {response.url} ·)"
+                    results.append(redirect_info)
+                elif response.status_code != 200:
+                    results.append(f"{url} (· 无效，状态码: {response.status_code} ·)")
+                # 注释掉正常的输出
+                # elif response.status_code == 200:
+                #     results.append(f"{url} (· 有效 ·)")
         except requests.RequestException as e:
             results.append(f"{url} (· 检查时出错: {e} ·)")
     return results
