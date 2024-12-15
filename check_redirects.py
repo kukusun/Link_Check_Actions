@@ -118,7 +118,7 @@ def check_urls(urls):
                 redirect_urls = [resp.url for resp in response.history]
                 redirect_urls.append(response.url)
                 visible_url = get_base_url(redirect_urls[-1]).rstrip('/')
-                if visible_url != original_base_url:
+                if visible_url != original_base_url and final_base_url != original_base_url:
                     redirect_info = f"{url} (· 重定向到 {response.url} ·)\n(· 重定向过程"
                     for resp in response.history:
                         redirect_info += f" ---> 状态码: {resp.status_code}, URL: {resp.url}"
