@@ -1,4 +1,5 @@
 import requests
+from urllib.parse import urlsplit
 
 # 在这里添加你收藏的链接
 urls = [
@@ -103,15 +104,17 @@ headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0"
 }
 
+def get_base_url(url):
+    return "{0.scheme}://{0.netloc}{0.path}".format(urlsplit(url))
+
 def check_urls(urls):
     results = []
     for url in urls:
         try:
             response = requests.get(url, allow_redirects=True, headers=headers)
-            final_url = response.url.rstrip('/')
-            original_url = url.rstrip('/')
-
-            if response.history and final_url != original_url:
+            final_base_url = get_base_url(response.url).rstrip('/')
+            original_base_url = get_base_url(url).rstrip('/')
+            if response.history and final_base_url != original_base_url:
                 redirect_info = f"{url} (· 重定向到 {response.url} ·)\n(· 重定向过程"
                 for resp in response.history:
                     redirect_info += f" ---> 状态码: {resp.status_code}, URL: {resp.url}"
