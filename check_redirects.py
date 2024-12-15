@@ -96,6 +96,7 @@ urls = [
     "https://github.com/hellzerg/optimizer",
     "https://github.com/Code52/carnac",
     "https://github.com/taojy123/KeymouseGo",
+    "https://zhuanlan.zhihu.com/p/000000000",
     "https://github.com/xiaoxinpro/ChineseSubtitleConversionTool"
 ]
 
