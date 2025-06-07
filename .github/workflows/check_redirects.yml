@@ -2,8 +2,8 @@ name: Check Redirects
 
 on:
   schedule:
-    #- cron: '00 0 * * *'  # 每天 UTC 时间 0:00，即北京时间 8:00
-    #- cron: '00 14 * * *'  # 每天 UTC 时间 14:00，即北京时间 22:00
+    # - cron: '00 0 * * *'  # 每天 UTC 时间 0:00，即北京时间 8:00
+    # - cron: '00 14 * * *'  # 每天 UTC 时间 14:00，即北京时间 22:00
   workflow_dispatch:
 
 jobs:
